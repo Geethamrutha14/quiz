@@ -60,6 +60,30 @@ const quizQuestions = [
 ];
 
 let currentQuestionIndex = 0;
+// const showQuestions = ()=>{
+//     const questionDetails = quizQuestions[currentQuestionIndex];
+//     questionBox.textContent = questionDetails.question;
+//     const choice = questionDetails.choices;
+//     choicesBox.textContent = "";
+//     for(let i=0;i<choice.length;i++)
+//     {
+//         const choiceDiv = document.createElement('div');
+//         choiceDiv.textContent = choice[i];
+//         choiceDiv.classList.add('choice');
+//         choicesBox.appendChild(choiceDiv);
+//         choiceDiv.addEventListener('click',()=>{
+//             if(choiceDiv.classList.contains('selected'))
+//             {
+//                 choiceDiv.classList.remove('selected');
+//             }
+//             else{
+//                 choiceDiv.classList.add('selected');
+//             }
+//         });
+//     }
+//     currentQuestionIndex++;
+// }
+
 const showQuestions = ()=>{
     const questionDetails = quizQuestions[currentQuestionIndex];
     questionBox.textContent = questionDetails.question;
@@ -72,19 +96,22 @@ const showQuestions = ()=>{
         choiceDiv.classList.add('choice');
         choicesBox.appendChild(choiceDiv);
         choiceDiv.addEventListener('click',()=>{
-            if(choiceDiv.classList.contains('selected'))
-            {
-                choiceDiv.classList.remove('selected');
-            }
-            else{
-                choiceDiv.classList.add('selected');
-            }
+            // Remove 'selected' class from any other choices
+            const allChoices = document.querySelectorAll('.choice');
+            allChoices.forEach(choice => choice.classList.remove('selected'));
+            // Add 'selected' class to the clicked choice
+            choiceDiv.classList.add('selected');
         });
     }
     currentQuestionIndex++;
 }
 
+
 //function to check answers
+const checkAnswer = ()=>{
+    const selectedChoice = document.querySelector('.choice.selected');
+    console.log(selectedChoice.textContent);
+}
 
 nextbtn.addEventListener('click',()=>{
     if(currentQuestionIndex < quizQuestions.length)
