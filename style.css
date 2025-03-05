@@ -74,6 +74,10 @@ body{
     background-color: #007bff;
     color: #fff;
 }
+.scoreCard {
+    font-size: 26px;
+    margin-top: 20px;
+}
 
 @media(max-width : 768px)
 {
